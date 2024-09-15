@@ -1,0 +1,557 @@
+*, *:before, *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
+}
+
+.login-page {
+    background-image: url(../img/covers/AnnapurnaINepal8091m.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f6f8fa;
+}
+
+.user-form {
+    opacity: 0.3;
+    background-color: hsla( 0, 0%, 0%, .2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    animation: slideInFromBottom 1s forwards;
+}
+
+.error {
+    color: orange; /* semi-transparent red */
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-bottom: 20px; /* space between the error message and the form */
+    text-align: center;
+    width: 90%; /* to fit within the login page */
+    max-width: 400px;
+    animation: fadeIn 3s forwards; /* fade-in animation */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Form Entry Animation */
+@keyframes slideInFromBottom {    
+    0% {        
+        transform: translateY(100%);      
+        opacity: 0;
+    }   
+    100% {
+        transform: translateY(0);
+        opacity: 1;   
+    }
+}
+
+.user-form-text,
+.user-form-button {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: hsla(0, 0%, 100%, 0.2);
+}
+
+.user-form-text {
+    font-size: 16px;
+    box-shadow: 0 0 5px lightgreen;
+}
+
+.user-form-text:focus {
+    border: greenyellow solid 2px;
+    background-color: hsla(0, 0%, 100%, 0.6);
+    outline: none; 
+    transform: scale(1.02); 
+    transition: all 0.3s; 
+}
+
+.user-form-text::placeholder {
+    color: black;
+}
+
+.user-form-button {
+    background-color: orange;
+    border: none;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.user-form-button:hover {
+    background-color: darkorange;
+    transform: scale(1.05);
+}
+
+.login-footer {
+    background-color: rgba(0, 0, 0, 0.4); /* semi-transparent black */
+    color: #f2f2f2; /* subtle white */
+    font-size: 14px;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-footer div {
+    display: flex;
+    align-items: center;
+}
+
+.login-footer div img {
+    height: 20px;
+    margin-right: 5px;
+}
+
+/*---------------------------------Journey---------------------------------*/
+
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 231, 0.8); /* White background with slight transparency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    font-size: 4em;
+    background: linear-gradient(90deg, orange, green, orange, green, orange);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradientAnimation 1s infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+.user-info {
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #34495e;  /* Dark blue color */
+    color: #ecf0f1;  /* Light off-white color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Adds a slight shadow for depth */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.greeting {
+    font-weight: 500;  /* Semi-bold font-weight */
+    font-size: 18px;
+}
+
+.notification {
+    font-size: 16px;
+    background-color: orange;  /* Red color for notification */
+    padding: 5px 10px;
+    border-radius: 20px;  /* Rounded corners for the notification bubble */
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.notification-item {
+    color: green;
+}
+
+.journey-page {
+    background-color: #f6f8fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.journey-page main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-details {
+    display: none;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+
+.details-block {
+    flex: 1;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+h2 {
+    border-bottom: 2px solid #34495e;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.detail-label {
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+/* Journey Deck Section */
+.journey-deck {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Individual Journey Card */
+.journey-card {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.journey-header {
+    background-color: green;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    font-size: .8rem;
+    padding: 2px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.journey-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: stretch;
+    align-items: stretch;
+    grid-template-areas: 
+        "start-address end-address text"
+        "start-time end-time duration";
+}
+
+.info-item {
+    padding: 5px;
+    border: 1px solid #f5f5f5; 
+    background-color: #fff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-item p {
+    text-align: center;
+}
+
+.info-item.start-address {
+    grid-area: start-address;
+}
+
+.info-item.end-address {
+    grid-area: end-address;
+}
+
+.info-item.text {
+    grid-area: text;
+}
+
+.info-item.start-time {
+    grid-area: start-time;
+}
+
+.info-item.end-time {
+    grid-area: end-time;
+}
+
+.info-item.duration {
+    grid-area: duration;
+}
+
+.journey-map {
+    width: 100%;
+    height: 300px;
+}
+
+.journey-validation-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto; /* Three rows: for client name + select, comment, and button */
+    grid-template-areas: 
+        "client-name select" 
+        "comment comment" 
+        "button button"; /* Using named areas for clarity */
+}
+
+.form-group:nth-child(1) {
+    grid-area: client-name; /* Assign the client name to the first cell */
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group:nth-child(2) { /* This targets the select field */
+    grid-area: select; /* Assign the select field to the second cell */
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group:nth-child(3) { /* This targets the comment textarea */
+    padding: 5px 10px;
+    grid-area: comment; /* Make the comment section span both columns */
+}
+
+.journey-validation-form textarea {
+    width: 100%;
+    height: auto; /* This will override the default height set by the rows attribute */
+    resize: vertical; /* Allows users to adjust the height if needed but not the width */
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+}
+
+.journey-validation-form textarea::placeholder {
+    color: #a5a5a5;
+    font-style: italic;
+}
+
+.journey-validation-form input[type="text"] {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions for focus effect */
+}
+
+.journey-validation-form select {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1rem;
+    appearance: none; /* This removes the default appearance */
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions for focus effect */
+    text-align: center;
+}
+
+.journey-validation-form input[type="text"]:hover,
+.journey-validation-form textarea:hover,
+.journey-validation-form select:hover {
+    border-color: greenyellow;
+}
+
+.journey-validation-form input[type="text"]:focus,
+.journey-validation-form select:focus,
+.journey-validation-form textarea:focus {
+    border: greenyellow solid 2px;
+    outline: none; 
+    transform: scale(1.02); 
+    transition: all 0.3s; 
+}
+
+.validate-button {
+    grid-area: button;
+    background-color: orange;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0px 0px 10px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold; /* Bold font for button */
+    transition: all 0.3s ease; /* Smooth transition for all changes */
+}
+
+.validate-button:hover {
+    background-color: darkorange;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.validate-button:active {
+    transform: scale(0.95); /* Slight scaling when button is pressed */
+}
+
+.validate-button:disabled {
+    background-color: #e0e0e0; /* Grayed out when disabled */
+    cursor: not-allowed; /* Indicate the button is not clickable */
+}
+
+.journey-footer {
+    
+    background-color: #34495e; /* semi-transparent black */
+    color: #f2f2f2; /* subtle white */
+    font-size: 14px;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.journey-footer-img {
+    height: 20px;
+    margin-right: 5px;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f6f8fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #aaa;
+}
+
+.empty-message {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #777;
+}
+
+.refresh-link {
+    font-size: 16px;
+    color: orange;
+    text-decoration: none;
+    border: 1px solid orange;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.refresh-link:hover {
+    background-color: orange;
+    color: #fff;
+}
+
+.journey-validation-error { 
+    display: none;
+    color: #D8000C; 
+    background-color: #FFD2D2; 
+    border: 1px solid #D8000C;
+    padding: 10px 20px;  
+    font-size: 1rem;
+}
+
+.journey-validation-error:before {
+    content: '\26A0'; 
+    margin-right: 10px;
+    font-size: 20px; 
+}
+
+.journey-validation-error::after {
+    content: '\26A0'; 
+    margin-left: 10px;
+    font-size: 20px; 
+}
+
+@media screen and (max-width: 700px) {
+    .user-form-text,
+    .user-form-button {
+        padding: 25px;
+    }
+
+    .loader {
+        font-size: 2em;
+    }
+
+    .greeting {
+        font-size: .8rem;
+    }
+
+    .notification {
+        gap: 10px;
+    }
+    .notification-item {
+        font-size: 20px;
+    }
+
+    .journey-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+            "start-address start-time"
+            "end-address end-time"
+            "text duration";
+    }
+
+    .journey-map {
+        height: 200px;
+    }
+
+    .journey-validation-form {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto; /* Four rows: for client name + select, comment, button, and map */
+        grid-template-areas: 
+            "client-name" 
+            "select" 
+            "comment" 
+            "button"; /* Using named areas for clarity */
+    }
+}
